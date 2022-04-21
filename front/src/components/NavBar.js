@@ -40,6 +40,7 @@ export const NavBar = () => {
               Login
             </Link>
           </li>
+          
         </ul>
       </div>
     </nav>
