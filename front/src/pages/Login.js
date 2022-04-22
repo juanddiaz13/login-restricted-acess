@@ -3,32 +3,30 @@ import { useForm } from '../hooks/useForm';
 import './Login.scss';
 
 export const Login = () => {
-  const url = '/login';
+  const url = 'api/auth/login';
   const [formValues, handleInputChange] = useForm({
-    email: '',
+    username: '',
     password: ''
   });
 
-  const { email, password } = formValues;
+  const { username, password} = formValues;
 
   useEffect(() => {
-    console.log('email cambió');
-  }, [email]);
+  }, [username]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formValues);
     const response = await fetch(url,{
       method: 'POST', // *GET, POST, PUT, DELETE, etc.    
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached     
-      headers: {},
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(formValues) // body data type must match "Content-Type" header
-      }).then((response)=>{
-        console.log('finish api call - response:::',response);
-      }).catch((error)=>{
-          console.log('something wrong:::',error);
-      });  
-
+      })
+      const data = await response.json()
+      console.log(data)
   };
 
   return (
@@ -40,12 +38,12 @@ export const Login = () => {
 
         <div className='form-group'>
           <input
-            type='email'
-            name='email'
+            type='text'
+            name='username'
             className='form-control'
-            placeholder='Tu email'
+            placeholder='Tu usuario'
             autoComplete='off'
-            value={email}
+            value={username}
             onChange={handleInputChange}
           />
         </div>

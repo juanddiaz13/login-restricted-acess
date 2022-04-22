@@ -40,7 +40,6 @@ async function createUser(user) {
 
     const salt = bcryptjs.genSaltSync();
     user.password = bcryptjs.hashSync(password, salt);
-
     await getDbRef().collection(COLLECTION_NAME).insertOne(user);
     const token = jwt.sign({ username, email }, jwtKey);
     return {

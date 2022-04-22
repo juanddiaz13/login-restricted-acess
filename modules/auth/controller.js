@@ -1,6 +1,6 @@
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const jwtKey = process.env.JSON_TOKEN;
+const jwtKey = "k";
 const { getUserByUserName } = require('../users/controller');
 
 async function login(user) {
@@ -21,7 +21,6 @@ async function login(user) {
         let token = jwt.sign({ username, email: currentUser.email }, jwtKey, {
           expiresIn: '2h',
         });
-
         return {
           success: true,
           msg: 'Logged successfully',
