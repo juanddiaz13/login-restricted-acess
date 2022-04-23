@@ -11,7 +11,13 @@ export const Products = () => {
   }, []);
 
   const fetchProducts = async () => {
-    const resp = await fetch(url);
+    console.log("entra a fetchProducts()")
+    const resp = await fetch(url, {
+      method: 'GET',
+      headers: {
+          'access-token': localStorage.getItem('token')
+      }
+  });
     const data = await resp.json();
 
     const productsFromBE = data.products.map((resp) => {
@@ -28,6 +34,7 @@ export const Products = () => {
     <>
       <div className='products'>
         <h1>Products</h1>
+        <p>¡Sorpresa! No lista los productos, pero sí está enviando el access-token en el fetch y el link Productos se activa cuando existe un token válido</p>
         <div className='products-card-container'>
           {products.map((elm, index) => (
             <Card

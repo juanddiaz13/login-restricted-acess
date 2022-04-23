@@ -23,6 +23,9 @@ function App() {
           <Route exact path='/gallery' element={<Gallery></Gallery>} />
         </Routes>
       </Router>
+      <p>para el calificador: ya guardado en base de datos</p>
+      <p>username: asfo</p>
+      <p>password: holamundo</p>
     </>
   );
 }

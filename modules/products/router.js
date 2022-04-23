@@ -5,6 +5,8 @@ const { getProducts, createProduct } = require('./controller');
 /* GET product listing */
 router.get('/', async function (req, res, next) {
   const products = await getProducts();
+  console.log("GET PROPORPOR")
+  console.log(req.get('access-token'))
   res.json(products);
 });
 /** Create product */

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 export const NavBar = () => {
@@ -30,11 +30,12 @@ export const NavBar = () => {
               Contact
             </Link>
           </li>
-          <li className='nav-item'>
+          {localStorage.getItem('token')!=null?<li className='nav-item'>
             <Link className='nav-link' to='/products'>
               Products
             </Link>
-          </li>
+          </li>:<></>}
+          
           <li className='nav-item'>
             <Link className='nav-link' to='/login'>
               Login

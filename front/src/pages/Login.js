@@ -26,7 +26,10 @@ export const Login = () => {
       body: JSON.stringify(formValues) // body data type must match "Content-Type" header
       })
       const data = await response.json()
-      console.log(data)
+      console.log("llega oK OKOK OK")
+      console.log(data.token)
+      localStorage.setItem('token', data.token)
+      window.location.reload(false)
   };
 
   return (
